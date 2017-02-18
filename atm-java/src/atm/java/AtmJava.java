@@ -14,7 +14,11 @@ public class AtmJava {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+        //Account test = new Account("Sergio", 5.0, 12345);
+        //System.out.println(test.getBalance());
+
         // TODO code application logic here
     }
     
