@@ -3,52 +3,54 @@ package atm.java;
 /**
  * Created by MiguelHuerta on 2/17/17.
  */
-public class Account
+public class Account extends BaseAccount
 {
-        private String firstName;
-        private int accountNumber;
-        private double balance;
-        private String accountType = "checking";
+
+    /**
+     * Account Type
+     * @param accountType
+     *
+     */
+    public String accountType;
 
 
-        public Account(String name, double initBalance, int account)
-        {
-            firstName = name;
-            balance = initBalance;
-            accountNumber = account;
-        }
-
-        public void setFirstName(String name)
-        {
-            firstName = name;
-        }
-
-        public void setAccountNumber(int setNumber)
-        {
-            accountNumber = setNumber;
-        }
-
-        public void  depositAmount(double add)
+    public Account(String name, double initBalance, int account)
     {
-        balance += add;
+        // call the super method on the abstract class.
+        super(name, initBalance, account);
+
+        accountType = "checking"; // hardcoded for now.
+
     }
 
-        public void withdrawAmount(double amount)
-    {
-        balance -= amount;
-    }
-
-        public double getBalance()
-    {
-        return balance;
-    }
-
-        public String getAccountType()
+    public String getAccountType()
     {
         return accountType;
     }
 
-        public String getFirstName() { return firstName;}
+    public void  depositAmount(double add)
+{
+    balance += add;
+}
 
+    public void withdrawAmount(double amount)
+{
+    balance -= amount;
+}
 
+    /**
+     * toString method
+     *
+     * @return String
+     */
+    public String toString()
+    {
+        // display how the account information should be displayed.
+        String toString = super.toString();
+
+        // append to that output.
+        toString += "\n\tAccount Type: " + this.accountType;
+
+        return toString;
+    }
 }
