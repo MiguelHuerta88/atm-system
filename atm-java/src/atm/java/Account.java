@@ -7,11 +7,11 @@ public class Account
 {
         private String firstName;
         private int accountNumber;
-        private Double balance;
+        private double balance;
         private String accountType = "checking";
 
 
-        public Account(String name, Double initBalance, int account)
+        public Account(String name, double initBalance, int account)
         {
             firstName = name;
             balance = initBalance;
@@ -38,7 +38,7 @@ public class Account
         balance -= amount;
     }
 
-        public Double getBalance()
+        public double getBalance()
     {
         return balance;
     }

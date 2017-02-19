@@ -23,8 +23,8 @@ public class AtmJava {
         //System.out.println(test.getBalance());
         AtmController atmController = new AtmController(account, displayView);
 
-        atmController.displayBalance();
-        atmController.displayFirstName();
+        //atmController.displayBalance();
+        //atmController.displayFirstName();
 
 
         // TODO code application logic here
