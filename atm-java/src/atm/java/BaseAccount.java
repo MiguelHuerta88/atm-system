@@ -10,12 +10,6 @@ package atm.java;
  * @author Miguel Huerta <guelme88@gmail.com>
  */
 public abstract class BaseAccount {
-    /**
-     * First Name
-     *
-     * @var String firstName
-     */
-    public String firstName;
 
     /**
      * Balance
@@ -31,45 +25,37 @@ public abstract class BaseAccount {
      */
     public int accountNumber;
 
+    /**
+     * Account type id
+     *
+     * @var int type_id(1|2)
+     */
+    public int typeId;
+
+    /**
+     * last access time
+     *
+     * @var timestamp
+     */
+    public String lastAccessTime;
+
     // define the method that will be included when a class extends this class
 
     /**
      * Contructor
-     * @param name
+     * @param int account
      * @param initBalance
-     * @param account
+     * @param int accountTypeIf
+     * @param String accessTime
      */
-    BaseAccount(String name, double initBalance, int account)
+    BaseAccount(int account, double initBalance, int accountTypeId, String accessTime)
     {
-        firstName = name;
         balance = initBalance;
         accountNumber = account;
+        typeId = accountTypeId;
+        lastAccessTime = accessTime;
     }
 
-    /**
-     * set First name method
-     * @param name
-     *
-     * @return void
-     */
-    public void setFirstName(String name)
-    {
-        firstName = name;
-    }
-
-    /**
-     * Get first name
-     *
-     * @return String firstName
-     */
-    public String getFirstName() { return firstName;}
-
-    /**
-     * Set Account number
-     * @param setNumber
-     *
-     * @return void
-     */
     public void setAccountNumber(int setNumber)
     {
         accountNumber = setNumber;
@@ -83,6 +69,27 @@ public abstract class BaseAccount {
     public int getAccountNumber()
     {
         return this.accountNumber;
+    }
+
+    /**
+     * Get account type id
+     *
+     * @return int
+     */
+    public int getAccountTypeId()
+    {
+        return this.typeId;
+    }
+
+    /**
+     * Set account type id
+     *
+     * @param int
+     * @return void
+     */
+    public void setAccountTypeId(int typeId)
+    {
+        this.typeId = typeId;
     }
 
     /**
@@ -104,7 +111,6 @@ public abstract class BaseAccount {
     {
         // display how the account information should be displayed.
         String toString = "Account Information";
-        toString += "\n\tName: " + this.firstName;
         toString += "\n\tAccount Number: " + this.accountNumber;
         toString += "\n\tBalance: $" + this.balance;
 

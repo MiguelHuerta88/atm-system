@@ -6,26 +6,10 @@ package atm.java;
 public class Account extends BaseAccount
 {
 
-    /**
-     * Account Type
-     * @param accountType
-     *
-     */
-    public String accountType;
-
-
-    public Account(String name, double initBalance, int account)
+    public Account(int account, double initBalance, int typeId, String lastAccess)
     {
         // call the super method on the abstract class.
-        super(name, initBalance, account);
-
-        accountType = "checking"; // hardcoded for now.
-
-    }
-
-    public String getAccountType()
-    {
-        return accountType;
+        super(account, initBalance, typeId, lastAccess);
     }
 
     public void  depositAmount(double add)
@@ -47,9 +31,6 @@ public class Account extends BaseAccount
     {
         // display how the account information should be displayed.
         String toString = super.toString();
-
-        // append to that output.
-        toString += "\n\tAccount Type: " + this.accountType;
 
         return toString;
     }

@@ -9,27 +9,31 @@ import java.util.Scanner;
  */
 public class AtmController {
 
-    private Account model;
+    private Account accountModel;
+    private Customer cutomerModel;
+    private AccountType accountTypeModel;
     private AtmView view;
 
-    public AtmController(Account model, AtmView view)
+    public AtmController(Account accountModel, Customer cutomerModel, AccountType accountTypeModel, AtmView view)
     {
-        this.model = model;
+        this.accountModel = accountModel;
+        this.cutomerModel = cutomerModel;
+        this.accountTypeModel = accountTypeModel;
         this.view = view;
     }
 
     public void displayBalance()
     {
-        double balance = model.getBalance();
+        //double balance = model.getBalance();
 
-        view.displayBalance(balance);
+        //view.displayBalance(balance);
     }
 
     public void displayFirstName()
     {
-        String name = model.getFirstName();
+        //String name = model.getFirstName();
 
-        view.displayFirstName(name);
+        //view.displayFirstName(name);
 
     }
 
@@ -78,7 +82,7 @@ public class AtmController {
         switch(selection) {
             case 1:
                 // display the account info
-                String accountInfo = this.model.toString();
+                String accountInfo = this.accountModel.toString();
 
                 this.view.displayMessage(accountInfo);
 
