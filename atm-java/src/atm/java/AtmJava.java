@@ -23,6 +23,12 @@ public class AtmJava {
         //System.out.println(test.getBalance());
         AtmController atmController = new AtmController(account, displayView);
 
+        // show the menu
+        atmController.initView();
+
+        // listen call function to listen for selections
+        atmController.listenForSelection();
+
         //atmController.displayBalance();
         //atmController.displayFirstName();
 

@@ -12,8 +12,7 @@ public class AtmView {
      */
     AtmView()
     {
-        // this function will initially display the menu. to make the menu reusable we will call an internal function
-        this.displayMenu();
+        // silence is golden.
     }
 
     /**
@@ -32,6 +31,9 @@ public class AtmView {
         System.out.println("||      4) End Session                                                 ||");
         System.out.println("||                                                                     ||");
         System.out.println("=======================================================================||");
+
+        // we output the make selection text
+        System.out.print("Make Selection:");
 
         // the view is complete. We listen for the selection inside the controller.
     }
@@ -54,6 +56,19 @@ public class AtmView {
      */
     public void displayFirstName(String name){
         System.out.print("Hello! Welcome " + name + "!");
+    }
+
+    /**
+     * displaying message
+     *
+     * @param string text
+     *
+     * @return void
+     */
+    public void displayMessage(String text)
+    {
+        // we just output the damn thing haha
+        System.out.println(text);
     }
 }
 
