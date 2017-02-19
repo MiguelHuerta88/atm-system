@@ -1,7 +1,7 @@
 package atm.java;
 
 /**
- * Created by Darkness on 2/17/2017.
+ * Created by Jerry Landeros on 2/17/2017.
  */
 public class AtmController {
     private Account model;

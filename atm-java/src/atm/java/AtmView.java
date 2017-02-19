@@ -1,7 +1,7 @@
 package atm.java;
 
 /**
- * Created by Darkness on 2/18/2017.
+ * Created by Jerry Landeros on 2/18/2017.
  */
 public class AtmView {
     public void displayBalance(double balance) {
