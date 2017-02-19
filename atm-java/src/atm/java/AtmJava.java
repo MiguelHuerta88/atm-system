@@ -16,8 +16,16 @@ public class AtmJava {
      */
     public static void main(String[] args)
     {
-        //Account test = new Account("Sergio", 5.0, 12345);
+        Account account = new Account("Sergio", 5.0, 12345);
+        AtmView displayView =  new AtmView();
+
+//        displayView.mainMenu();
         //System.out.println(test.getBalance());
+        AtmController atmController = new AtmController(account, displayView);
+
+        atmController.displayBalance();
+        atmController.displayFirstName();
+
 
         // TODO code application logic here
     }

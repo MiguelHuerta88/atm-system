@@ -5,21 +5,22 @@ package atm.java;
  */
 public class Account
 {
-        private String accountHolder;
+        private String firstName;
         private int accountNumber;
         private Double balance;
         private String accountType = "checking";
 
+
         public Account(String name, Double initBalance, int account)
         {
-            accountHolder = name;
+            firstName = name;
             balance = initBalance;
             accountNumber = account;
         }
 
-        public void setUserName(String name)
+        public void setFirstName(String name)
         {
-            accountHolder = name;
+            firstName = name;
         }
 
         public void setAccountNumber(int setNumber)
@@ -47,6 +48,7 @@ public class Account
         return accountType;
     }
 
+        public String getFirstName() { return firstName;}
 
 
 }
