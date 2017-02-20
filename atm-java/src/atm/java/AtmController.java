@@ -1,7 +1,6 @@
 package atm.java;
 
 
-import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -9,12 +8,12 @@ import java.util.Scanner;
  */
 public class AtmController {
 
-    private checkingAccount accountModel;
+    private CheckingAccount accountModel;
     private Customer cutomerModel;
     private AccountType accountTypeModel;
     private AtmView view;
 
-    public AtmController(checkingAccount accountModel, Customer customerModel, AccountType accountTypeModel, AtmView view)
+    public AtmController(CheckingAccount accountModel, Customer customerModel, AccountType accountTypeModel, AtmView view)
     {
         this.accountModel = accountModel;
         this.cutomerModel = customerModel;

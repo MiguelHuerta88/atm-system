@@ -3,24 +3,30 @@ package atm.java;
 /**
  * Created by MiguelHuerta on 2/17/17.
  */
-public class checkingAccount extends BaseAccount
+public class CheckingAccount extends BaseAccount
 {
 
-    public checkingAccount(int account, double initBalance, int typeId, String lastAccess)
+    public CheckingAccount(int account, double initBalance, int typeId, String lastAccess)
     {
         // call the super method on the abstract class.
         super(account, initBalance, typeId, lastAccess);
     }
 
-    public void  depositAmount(double add)
-{
-    balance += add;
-}
+    public void depositAmount(double add)
+    {
+        if(balance > 0)
+        {
+            balance +=add;
+        }
+    }
 
     public void withdrawAmount(double amount)
-{
-    balance -= amount;
-}
+    {
+        if ((balance > 0 && amount < balance) && (amount > 0 && amount <= 500) )
+        {
+            balance -= amount;
+        }
+    }
 
     /**
      * toString method
