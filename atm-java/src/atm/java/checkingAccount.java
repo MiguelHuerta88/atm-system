@@ -3,10 +3,10 @@ package atm.java;
 /**
  * Created by MiguelHuerta on 2/17/17.
  */
-public class Account extends BaseAccount
+public class checkingAccount extends BaseAccount
 {
 
-    public Account(int account, double initBalance, int typeId, String lastAccess)
+    public checkingAccount(int account, double initBalance, int typeId, String lastAccess)
     {
         // call the super method on the abstract class.
         super(account, initBalance, typeId, lastAccess);

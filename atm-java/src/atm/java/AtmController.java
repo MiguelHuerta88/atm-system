@@ -9,15 +9,15 @@ import java.util.Scanner;
  */
 public class AtmController {
 
-    private Account accountModel;
+    private checkingAccount accountModel;
     private Customer cutomerModel;
     private AccountType accountTypeModel;
     private AtmView view;
 
-    public AtmController(Account accountModel, Customer cutomerModel, AccountType accountTypeModel, AtmView view)
+    public AtmController(checkingAccount accountModel, Customer customerModel, AccountType accountTypeModel, AtmView view)
     {
         this.accountModel = accountModel;
-        this.cutomerModel = cutomerModel;
+        this.cutomerModel = customerModel;
         this.accountTypeModel = accountTypeModel;
         this.view = view;
     }
