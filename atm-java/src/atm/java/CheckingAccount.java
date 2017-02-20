@@ -15,7 +15,7 @@ public class CheckingAccount extends BaseAccount
 
     public void depositAmount(double add)
     {
-        if(balance > 0)
+        if(add > 0)
         {
             balance +=add;
         }
