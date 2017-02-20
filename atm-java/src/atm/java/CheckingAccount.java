@@ -5,7 +5,7 @@ package atm.java;
  */
 public class CheckingAccount extends BaseAccount
 {
-    public static final double WITHDRAW_MAX = 500.00;
+    public final double WITHDRAW_MAX = 500.00;
 
     public CheckingAccount(int account, double initBalance, int typeId, String lastAccess)
     {
