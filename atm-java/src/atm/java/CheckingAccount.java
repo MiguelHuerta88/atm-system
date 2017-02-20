@@ -38,9 +38,9 @@ public class CheckingAccount extends BaseAccount
     public String toString()
     {
         // display how the account information should be displayed.
-        String toString = super.toString();
+        //String toString = super.toString();
 
-        return toString;
+        return super.toString();
     }
 }
 
