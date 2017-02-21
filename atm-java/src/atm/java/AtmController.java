@@ -47,12 +47,12 @@ public class AtmController {
         if(this.pinMatches(this.cutomerModel))
         {
             this.view.displayMenu();
+        } else {
+            // if we reached here. the user could not match the pin
+            this.view.displayMessage("You have reached max number of tries for pin.");
+            this.view.displayMessage("Terminating program. Goodbye");
+            System.exit(0);
         }
-
-        // if we reached here. the user could not match the pin
-        this.view.displayMessage("You have reached max number of tries for pin.");
-        this.view.displayMessage("Terminating program. Goodbye");
-        System.exit(0);
     }
 
     /**
