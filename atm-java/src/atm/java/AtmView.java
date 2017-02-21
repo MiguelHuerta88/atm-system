@@ -70,5 +70,15 @@ public class AtmView {
         // we just output the damn thing haha
         System.out.println(text);
     }
+
+    /**
+     * display message on same line for command interaction
+     *
+     * @return void
+     */
+    public void displayMessageSameLine(String text)
+    {
+        System.out.print(text);
+    }
 }
 

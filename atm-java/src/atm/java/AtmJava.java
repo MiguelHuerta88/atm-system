@@ -17,7 +17,7 @@ public class AtmJava {
     public static void main(String[] args)
     {
         CheckingAccount account = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 22:00:00");
-        Customer customer = new Customer(1, "Sergio", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745);
+        Customer customer = new Customer(1, "Sergio", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234);
         AccountType accountType = new AccountType(1, "Checking");
 
         AtmView displayView =  new AtmView();
