@@ -43,7 +43,50 @@ public class AtmController {
      */
     public void initView()
     {
-        this.view.displayMenu();
+        // before we display the menu we have to ask the user for their pin
+        if(this.pinMatches(this.cutomerModel))
+        {
+            this.view.displayMenu();
+        }
+
+        // if we reached here. the user could not match the pin
+        this.view.displayMessage("You have reached max number of tries for pin.");
+        this.view.displayMessage("Terminating program. Goodbye");
+        System.exit(0);
+    }
+
+    /**
+     * Function to decrypt customer pin and check if it matches what was entered
+     *
+     * @param Customer customerModel
+     *
+     * @return boolean
+     */
+    protected boolean pinMatches(Customer customerModel)
+    {
+        // counter
+        int counter = 3;
+
+        // decrypt the pin
+        int decryptedPin = customerModel.getPinEncrypterDecrypter().decrypt(customerModel.getPin());
+
+        // scanner
+        Scanner sc = new Scanner(System.in);
+
+
+        // we give the user three tries to enter a valid matching pin. otherwise we end the program
+        while(counter > 0) {
+            this.view.displayMessageSameLine("Enter pin for account: ");
+
+            int pin = sc.nextInt();
+
+            // check if they match
+            if(pin == decryptedPin) {
+                return true;
+            }
+            counter--;
+        }
+        return false;
     }
 
     /**
