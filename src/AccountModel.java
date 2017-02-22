@@ -44,7 +44,7 @@ public abstract class AccountModel {
     /**
      * Contructor
      * @param int account
-     * @param initBalance
+     * @param init Balance
      * @param int accountTypeIf
      * @param String accessTime
      **/

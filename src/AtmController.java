@@ -132,6 +132,7 @@ public class AtmController {
 
             case 2:
 
+                this.view.depositMenu();
                 break;
 
             case 3:

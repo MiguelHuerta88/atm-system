@@ -28,7 +28,7 @@ public class AtmView {
         System.out.println("||      3) Withdraw Money                                              ||");
         System.out.println("||      4) End Session                                                 ||");
         System.out.println("||                                                                     ||");
-        System.out.println("=======================================================================||");
+        System.out.println("||=====================================================================||");
 
         // we output the make selection text
         System.out.print("Make Selection: ");
@@ -36,6 +36,18 @@ public class AtmView {
         // the view is complete. We listen for the selection inside the controller.
     }
 
+    protected void depositMenu()
+    {
+        System.out.println("||=====================================================================||");
+        System.out.println("||         Welcome to deposit menu. Please make a selection.           ||");
+        System.out.println("||                  1) Checking                                        ||");
+        System.out.println("||                  2) Savings                                         ||");
+        System.out.println("||                  3) Return to Menu                                  ||");
+        System.out.println("||                  4) End Session                                     ||");
+        System.out.println("||=====================================================================||");
+
+        System.out.print("Make Selection: ");
+    }
     /**
      *
      * @param balance
