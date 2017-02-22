@@ -37,12 +37,9 @@ public abstract class AccountModel {
      */
     public String lastAccessTime;
 
-    public String firstName;
-    //first name
 
-    public String lastName;
-    //last name
-    // define the method that will be included when a class extends this class
+    public Customer customer;
+
 
     /**
      * Contructor
@@ -50,16 +47,17 @@ public abstract class AccountModel {
      * @param initBalance
      * @param int accountTypeIf
      * @param String accessTime
-     */
-    AccountModel(int account, double initBalance, int accountTypeId, String accessTime, String first, String last)
+     **/
+    AccountModel(int account, double initBalance, int accountTypeId, String accessTime, Customer customer)
     {
         balance = initBalance;
         accountNumber = account;
         typeId = accountTypeId;
         lastAccessTime = accessTime;
-        firstName = first;
-        lastName = last;
+        this.customer = customer;
+
     }
+
 
     public void setAccountNumber(int setNumber)
     {
@@ -116,9 +114,12 @@ public abstract class AccountModel {
     {
         // display how the account information should be displayed.
         String toString = "Account Information";
-        toString += "\n\tAccount Number: " + this.accountNumber;
-        toString += "\n\tBalance: $" + this.balance;
-        toString += "\n\tCustomer Name: " + this.firstName + " " + this.lastName;
+        toString += "\n\tCustomer Name:  " + this.customer.firstName + " " + this.customer.lastName;
+        toString += "\n\tAddress:        " + this.customer.address +", " + this.customer.city + ", " + this.customer.state + " " + this.customer.zip;
+        toString += "\n\tAccount Number: " + this.accountNumber + "\t\t\tID: " + this.customer.id;
+        //toString += "\n\tBalance: $" + sprintf("%.2f", this.balance); I need a sprint equivalent
+        toString += "\n\tBalance:        $ " + this.balance;
+        toString += "\n\tAccessed Last:  " + this.lastAccessTime;
         return toString;
     }
 
