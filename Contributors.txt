@@ -1,3 +1,0 @@
-Miguel - Abstract Class
-Sergio Mr. Japan - Account Class
-Jerry - Basic Driver
