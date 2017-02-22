@@ -37,6 +37,11 @@ public abstract class AccountModel {
      */
     public String lastAccessTime;
 
+    public String firstName;
+    //first name
+
+    public String lastName;
+    //last name
     // define the method that will be included when a class extends this class
 
     /**
@@ -46,12 +51,14 @@ public abstract class AccountModel {
      * @param int accountTypeIf
      * @param String accessTime
      */
-    AccountModel(int account, double initBalance, int accountTypeId, String accessTime)
+    AccountModel(int account, double initBalance, int accountTypeId, String accessTime, String first, String last)
     {
         balance = initBalance;
         accountNumber = account;
         typeId = accountTypeId;
         lastAccessTime = accessTime;
+        firstName = first;
+        lastName = last;
     }
 
     public void setAccountNumber(int setNumber)
@@ -111,7 +118,7 @@ public abstract class AccountModel {
         String toString = "Account Information";
         toString += "\n\tAccount Number: " + this.accountNumber;
         toString += "\n\tBalance: $" + this.balance;
-
+        toString += "\n\tCustomer Name: " + this.firstName + " " + this.lastName;
         return toString;
     }
 

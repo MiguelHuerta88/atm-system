@@ -31,7 +31,7 @@ public class AtmView {
         System.out.println("=======================================================================||");
 
         // we output the make selection text
-        System.out.print("Make Selection:");
+        System.out.print("Make Selection: ");
 
         // the view is complete. We listen for the selection inside the controller.
     }

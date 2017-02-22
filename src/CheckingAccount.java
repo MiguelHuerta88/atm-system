@@ -5,10 +5,10 @@ public class CheckingAccount extends AccountModel
 {
     public final double WITHDRAW_MAX = 500.00;
 
-    public CheckingAccount(int account, double initBalance, int typeId, String lastAccess)
+    public CheckingAccount(int account, double initBalance, int typeId, String lastAccess, String first, String last)
     {
         // call the super method on the abstract class.
-        super(account, initBalance, typeId, lastAccess);
+        super(account, initBalance, typeId, lastAccess, first, last);
     }
 
     public void depositAmount(double add)

@@ -5,9 +5,9 @@ public class SavingsAccount extends AccountModel
 {
     public final double WITHDRAW_MAX = 2000.00;
 
-    public SavingsAccount(int account, double initBalance, int typeId, String lastAcces)
+    public SavingsAccount(int account, double initBalance, int typeId, String lastAcces, String first, String last)
     {
-        super(account, initBalance, typeId, lastAcces);
+        super(account, initBalance, typeId, lastAcces, first, last);
     }
 
     public void depositAmount(double deposit)
