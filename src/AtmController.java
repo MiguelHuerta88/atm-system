@@ -43,6 +43,7 @@ public class AtmController {
         // before we display the menu we have to ask the user for their pin
         if(this.pinMatches(this.customerModel))
         {
+            //this.view.greetUser(this.customerModel.firstName);
             this.view.displayMenu();
         } else {
             // if we reached here. the user could not match the pin
@@ -131,6 +132,7 @@ public class AtmController {
 
             case 2:
 
+                this.view.depositMenu();
                 break;
 
             case 3:
