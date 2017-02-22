@@ -6,14 +6,14 @@ import java.util.Scanner;
 public class AtmController {
 
     private CheckingAccount accountModel;
-    private Customer cutomerModel;
+    private Customer customerModel;
     private AccountType accountTypeModel;
     private AtmView view;
 
     public AtmController(CheckingAccount accountModel, Customer customerModel, AccountType accountTypeModel, AtmView view)
     {
         this.accountModel = accountModel;
-        this.cutomerModel = customerModel;
+        this.customerModel = customerModel;
         this.accountTypeModel = accountTypeModel;
         this.view = view;
     }
@@ -41,7 +41,7 @@ public class AtmController {
     public void initView()
     {
         // before we display the menu we have to ask the user for their pin
-        if(this.pinMatches(this.cutomerModel))
+        if(this.pinMatches(this.customerModel))
         {
             this.view.displayMenu();
         } else {
