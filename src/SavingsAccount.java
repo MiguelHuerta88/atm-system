@@ -1,7 +1,7 @@
 /**
  * Created by Darkness (Jerry Landeros) on 2/20/2017.
  */
-public class SavingsAccount extends BaseAccount
+public class SavingsAccount extends AccountModel
 {
     public final double WITHDRAW_MAX = 2000.00;
 

@@ -1,7 +1,7 @@
 /**
  * Created by MiguelHuerta on 2/17/17.
  */
-public class CheckingAccount extends BaseAccount
+public class CheckingAccount extends AccountModel
 {
     public final double WITHDRAW_MAX = 500.00;
 

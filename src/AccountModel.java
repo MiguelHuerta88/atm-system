@@ -7,7 +7,7 @@
  *
  * @author Miguel Huerta <guelme88@gmail.com>
  */
-public abstract class BaseAccount {
+public abstract class AccountModel {
 
     /**
      * Balance
@@ -46,7 +46,7 @@ public abstract class BaseAccount {
      * @param int accountTypeIf
      * @param String accessTime
      */
-    BaseAccount(int account, double initBalance, int accountTypeId, String accessTime)
+    AccountModel(int account, double initBalance, int accountTypeId, String accessTime)
     {
         balance = initBalance;
         accountNumber = account;
