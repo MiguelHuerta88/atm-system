@@ -65,9 +65,6 @@ public class AtmController {
         // counter
         int counter = 3;
 
-        // decrypt the pin
-        int decryptedPin = customerModel.getPinEncrypterDecrypter().decrypt(customerModel.getPin());
-
         // scanner
         Scanner sc = new Scanner(System.in);
 
@@ -78,8 +75,11 @@ public class AtmController {
 
             int pin = sc.nextInt();
 
+            // hash the pin to try to match
+            Hasher hasher = new Hasher(String.valueOf(pin));
+
             // check if they match
-            if(pin == decryptedPin) {
+            if(hasher.hashText().equals(this.customerModel.getPin())) {
                 return true;
             }
             counter--;

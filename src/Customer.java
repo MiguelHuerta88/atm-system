@@ -57,14 +57,7 @@ public class Customer {
      *
      * @var pin
      */
-    public byte[] pin;
-
-    /**
-     * PinEncrypterDecrypter var
-     *
-     * @var PinEncrypterDecrypter
-     */
-    protected PinEncrypterDecrypter pinEncrypterDecrypter;
+    public String pin;
 
     /**
      * Constructor goes here
@@ -76,7 +69,7 @@ public class Customer {
      * @param String city
      * @param String state
      * @param int zip
-     * @param byte[] pin
+     * @param int pin
      */
     Customer(int id, String firstName, String lastName, String address, String city, String state, int zip, int pin)
     {
@@ -88,10 +81,9 @@ public class Customer {
         this.state = state;
         this.zip = zip;
 
-        // encrypter
-        this.pinEncrypterDecrypter = new PinEncrypterDecrypter();
-        this.pin = this.pinEncrypterDecrypter.encrypt(pin);
-
+        // hash the pin
+        Hasher hasher = new Hasher(String.valueOf(pin));
+        this.pin = hasher.hashText();
     }
 
     /* create all getters and setter */
@@ -101,18 +93,8 @@ public class Customer {
      *
      * @return byte[] pin
      */
-    public byte[] getPin()
+    public String getPin()
     {
         return this.pin;
-    }
-
-    /**
-     * get PinEncrypterDecrypter instance
-     *
-     * @return PinEncrypterDecrypter
-     */
-    public PinEncrypterDecrypter getPinEncrypterDecrypter()
-    {
-        return this.pinEncrypterDecrypter;
     }
 }
