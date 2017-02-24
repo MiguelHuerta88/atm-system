@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author MiguelHuerta
@@ -15,17 +18,35 @@ public class AtmJava {
      */
     public static void main(String[] args)
     {
-        Customer customer = new Customer(1, "Sergio", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234);
-        CheckingAccount account = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 22:00:00", customer);
+        Customer customer = new Customer(000001, "Sergio", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234, "svasquez");
+        Customer customer2 = new Customer(000002, "Heidi", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234, "hvasquez");
+
+        ArrayList<Customer> customers = new ArrayList<Customer>();
+        customers.add(customer);
+        customers.add(customer2);
+
+        CheckingAccount account = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 22:00:00", 000001);
+        CheckingAccount account2 = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 10:05:00", 000002);
+
+        SavingsAccount saving = new SavingsAccount(167894, 10000, 2, "2017-02-23 10:59:00", 1);
+
+        HashMap<Integer, Account> accounts = new HashMap<Integer, Account>();
+        accounts.put(account.getAccountNumber(), account);
+        accounts.put(account2.getAccountNumber(), account2);
+        accounts.put(saving.getAccountNumber(), saving);
 
         AccountType accountType = new AccountType(1, "Checking");
+        AccountType savingType = new AccountType(2, "Savings");
 
+        HashMap<Integer, AccountType> accountTypes = new HashMap<Integer, AccountType>();
+        accountTypes.put(accountType.getAccountType(), accountType);
+        accountTypes.put(savingType.getAccountType(), savingType);
 
         AtmView displayView =  new AtmView();
 
-//        displayView.mainMenu();
-        //System.out.println(test.getBalance());
-        AtmController atmController = new AtmController(account, customer, accountType, displayView);
+        // this will change once we move to a database system. the customer and accounts will
+        // be pulled inside controller based on accountId or some field to be searched on
+        AtmController atmController = new AtmController(accounts, customers, accountTypes, displayView);
 
         // show the menu
         atmController.initView();
@@ -33,11 +54,6 @@ public class AtmJava {
         // listen call function to listen for selections
         atmController.listenForSelection();
 
-        //atmController.displayBalance();
-        //atmController.displayFirstName();
-
-
-        // TODO code application logic here
     }
     
 }

@@ -1,13 +1,13 @@
 /**
  * Created by Darkness (Jerry Landeros) on 2/20/2017.
  */
-public class SavingsAccount extends AccountModel
+public class SavingsAccount extends Account
 {
     public final double WITHDRAW_MAX = 2000.00;
 
-    public SavingsAccount(int account, double initBalance, int typeId, String lastAcces, Customer customer)
+    public SavingsAccount(int account, double initBalance, int typeId, String lastAcces, int customerId)
     {
-        super(account, initBalance, typeId, lastAcces, customer);
+        super(account, initBalance, typeId, lastAcces, customerId);
     }
 
     public void depositAmount(double deposit)

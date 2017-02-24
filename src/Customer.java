@@ -8,14 +8,14 @@ public class Customer {
      *
      * @var String firstName
      */
-    public String firstName;
+    protected String firstName;
 
     /**
      * last name
      *
      * @var String lastname
      */
-    public String lastName;
+    protected String lastName;
 
     /**
      * Id for customer
@@ -29,21 +29,21 @@ public class Customer {
      *
      * @var String
      */
-    public String address;
+    protected String address;
 
     /**
      * State variable
      *
      * @var String
      */
-    public String state;
+    protected String state;
 
     /**
      * City for user
      *
      * @string city
      */
-    public String city;
+    protected String city;
 
     /**
      * Zip variable
@@ -57,7 +57,14 @@ public class Customer {
      *
      * @var pin
      */
-    public String pin;
+    private String pin;
+
+    /**
+     * username variable
+     *
+     * @var username
+     */
+    private String username;
 
     /**
      * Constructor goes here
@@ -70,8 +77,9 @@ public class Customer {
      * @param String state
      * @param int zip
      * @param int pin
+     * @param String username
      */
-    Customer(int id, String firstName, String lastName, String address, String city, String state, int zip, int pin)
+    Customer(int id, String firstName, String lastName, String address, String city, String state, int zip, int pin, String username)
     {
         this.id = id;
         this.firstName = firstName;
@@ -80,6 +88,7 @@ public class Customer {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.username = username;
 
         // hash the pin
         Hasher hasher = new Hasher(String.valueOf(pin));
@@ -97,4 +106,38 @@ public class Customer {
     {
         return this.pin;
     }
+
+    /**
+     * get customer id
+     *
+     * @return int
+     */
+    public int getCustomerId()
+    {
+        return this.id;
+    }
+
+    /**
+     * get username
+     *
+     * @return String
+     */
+    public String getUsername()
+    {
+        return this.username;
+    }
+
+    /**
+     * toString method for a Customer
+     *
+     * @return String
+     */
+    public String toString()
+    {
+        // return all the information for the object
+        String toString = "\n\tCustomer Name:  " + this.firstName + " " + this.lastName;
+        toString += "\n\tAddress:        " + this.address +", " + this.city + ", " + this.state + " " + this.zip;
+        return toString;
+    }
+
 }

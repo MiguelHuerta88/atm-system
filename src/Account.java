@@ -7,21 +7,21 @@
  *
  * @author Miguel Huerta <guelme88@gmail.com>
  */
-public abstract class AccountModel {
+public class Account {
 
     /**
      * Balance
      *
      * @var double balance
      */
-    public double balance;
+    protected double balance;
 
     /**
      * Acount Number
      *
      * @var String accountNumber
      */
-    public int accountNumber;
+    protected int accountNumber;
 
     /**
      * Account type id
@@ -37,8 +37,12 @@ public abstract class AccountModel {
      */
     public String lastAccessTime;
 
-
-    public Customer customer;
+    /**
+     * customer id
+     *
+     * @var customerId
+     */
+    protected int customerId;
 
 
     /**
@@ -48,14 +52,13 @@ public abstract class AccountModel {
      * @param int accountTypeIf
      * @param String accessTime
      **/
-    AccountModel(int account, double initBalance, int accountTypeId, String accessTime, Customer customer)
+    Account(int account, double initBalance, int accountTypeId, String accessTime, int customerId)
     {
         balance = initBalance;
         accountNumber = account;
         typeId = accountTypeId;
         lastAccessTime = accessTime;
-        this.customer = customer;
-
+        customerId = customerId;
     }
 
 
@@ -106,18 +109,24 @@ public abstract class AccountModel {
     }
 
     /**
+     * Get customerId
+     *
+     * @return int
+     */
+    public int getCustomerId()
+    {
+        return this.customerId;
+    }
+
+    /**
      * toString method
      *
      * @return String
      */
     public String toString()
     {
-        // display how the account information should be displayed.
         String toString = "Account Information";
-        toString += "\n\tCustomer Name:  " + this.customer.firstName + " " + this.customer.lastName;
-        toString += "\n\tAddress:        " + this.customer.address +", " + this.customer.city + ", " + this.customer.state + " " + this.customer.zip;
-        toString += "\n\tAccount Number: " + this.accountNumber + "\t\t\tID: " + this.customer.id;
-        //toString += "\n\tBalance: $" + sprintf("%.2f", this.balance); I need a sprint equivalent
+        toString += "\n\tAccount Number: " + this.accountNumber;
         toString += "\n\tBalance:        $ " + this.balance;
         toString += "\n\tAccessed Last:  " + this.lastAccessTime;
         return toString;
@@ -126,16 +135,22 @@ public abstract class AccountModel {
     // define the abstract method that each class will have to define
 
     /**
-     * Abstract method
+     * Basic deposit function. Each model that extends should override to their needs.
      *
      * @param add
      */
-    abstract void depositAmount(double add);
+    public void depositAmount(double add)
+    {
+        this.balance += add;
+    }
 
     /**
-     * Abstract method. To withdraw amount.
+     * basic withdraw function. Each model that extends should override to their needs
      *
      * @param amount
      */
-    abstract void withdrawAmount(double amount);
+    public void withdrawAmount(double amount)
+    {
+        this.balance -= amount;
+    }
 }

@@ -1,21 +1,36 @@
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Iterator;
 
 /**
  * Created by Jerry Landeros on 2/17/2017.
  */
 public class AtmController {
 
-    private CheckingAccount accountModel;
-    private Customer customerModel;
-    private AccountType accountTypeModel;
+    // these are null at first
+    private Customer customerModel = null;
     private AtmView view;
 
-    public AtmController(CheckingAccount accountModel, Customer customerModel, AccountType accountTypeModel, AtmView view)
+    private HashMap<Integer, Account> accounts;
+    private ArrayList<Customer> customers;
+    private HashMap<Integer, AccountType> accountTypes;
+
+    // transaction records for now will be stored in arraylist
+    private ArrayList<Transaction> transactions;
+
+    public AtmController(HashMap<Integer, Account> accounts, ArrayList<Customer> customers, HashMap<Integer, AccountType> accountTypes, AtmView view)
     {
-        this.accountModel = accountModel;
+        /*this.accountModel = accountModel;
         this.customerModel = customerModel;
-        this.accountTypeModel = accountTypeModel;
+        this.accountTypeModel = accountTypeModel;*/
+        this.accounts = accounts;
+        this.customers = customers;
+        this.accountTypes = accountTypes;
         this.view = view;
+
+        // set up the transactions
+        this.transactions = new ArrayList<Transaction>();
     }
 
     public void displayBalance()
@@ -41,7 +56,7 @@ public class AtmController {
     public void initView()
     {
         // before we display the menu we have to ask the user for their pin
-        if(this.pinMatches(this.customerModel))
+        if(this.pullupCustomer())
         {
             //this.view.greetUser(this.customerModel.firstName);
             this.view.displayMenu();
@@ -51,6 +66,50 @@ public class AtmController {
             this.view.displayMessage("Terminating program. Goodbye");
             System.exit(0);
         }
+    }
+
+    /**
+     * display menu to find a customer before we can begin the program
+     *
+     * @return boolean
+     */
+    public boolean pullupCustomer()
+    {
+        // this whole section can me optimized some. Work on this after we get it working correctly.
+        Scanner sc = new Scanner(System.in);
+
+        int counter = 3;
+
+        Customer customer = null;
+        while(counter > 0) {
+            this.view.displayMessageSameLine("Enter username:");
+            String username = sc.next();
+            // iterator
+            Iterator<Customer> iterator = this.customers.iterator();
+
+            // loop
+            boolean match = false;
+            while(iterator.hasNext()) {
+                customer = iterator.next();
+                if(customer.getUsername().equals(username)) {
+                    match = true;
+                    // matched a customer. break out of loop
+                    break;
+                }
+            }
+
+            if(match) {
+                // we have a customer check their pin not
+                if(this.pinMatches(customer)){
+
+                    // we matched a customer. set the variables that will be used by the controller
+                    this.customerModel = customer;
+                    return true;
+                }
+            }
+            counter--;
+        }
+        return false;
     }
 
     /**
@@ -79,7 +138,7 @@ public class AtmController {
             Hasher hasher = new Hasher(String.valueOf(pin));
 
             // check if they match
-            if(hasher.hashText().equals(this.customerModel.getPin())) {
+            if(hasher.hashText().equals(customerModel.getPin())) {
                 return true;
             }
             counter--;
@@ -122,9 +181,10 @@ public class AtmController {
         switch(selection) {
             case 1:
                 // display the account info
-                String accountInfo = this.accountModel.toString();
+                //String accountInfo = this.accountModel.toString();
+                //accountInfo += this.customerModel.toString();
 
-                this.view.displayMessage(accountInfo);
+                //this.view.displayMessage(accountInfo);
 
                 // display selection menu again
                 this.view.displayMenu();

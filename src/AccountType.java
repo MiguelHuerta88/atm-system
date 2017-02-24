@@ -29,4 +29,14 @@ public class AccountType {
     }
 
     /* make the getters and setters */
+
+    /**
+     * get account type
+     *
+     * @return int
+     */
+    public int getAccountType()
+    {
+        return this.typeId;
+    }
 }
