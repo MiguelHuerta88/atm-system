@@ -21,6 +21,7 @@ public class AtmView {
     protected void displayMenu()
     {
         // as of now we are just dumping the text to the terminal
+        System.out.println();
         System.out.println("||=====================================================================||");
         System.out.println("||  Welcome to the ATM machine. Please make a selection to begin.      ||");
         System.out.println("||      1) Display Account Information                                 ||");
@@ -29,6 +30,7 @@ public class AtmView {
         System.out.println("||      4) End Session                                                 ||");
         System.out.println("||                                                                     ||");
         System.out.println("||=====================================================================||");
+        System.out.println();
 
         // we output the make selection text
         System.out.print("Make Selection: ");
@@ -38,6 +40,7 @@ public class AtmView {
 
     protected void depositMenu()
     {
+        System.out.println();
         System.out.println("||=====================================================================||");
         System.out.println("||         Welcome to deposit menu. Please make a selection.           ||");
         System.out.println("||                  1) Checking                                        ||");
@@ -45,8 +48,24 @@ public class AtmView {
         System.out.println("||                  3) Return to Menu                                  ||");
         System.out.println("||                  4) End Session                                     ||");
         System.out.println("||=====================================================================||");
+        System.out.println();
 
-        System.out.print("Make Selection: ");
+        System.out.println("Make Selection: ");
+    }
+
+    protected void withdrawMenu()
+    {
+        System.out.println();
+        System.out.println("||=====================================================================||");
+        System.out.println("||         Welcome to withdraw menu. Please make a selection.          ||");
+        System.out.println("||                  1) Checking                                        ||");
+        System.out.println("||                  2) Savings                                         ||");
+        System.out.println("||                  3) Return to Menu                                  ||");
+        System.out.println("||                  4) End Session                                     ||");
+        System.out.println("||=====================================================================||");
+        System.out.println();
+
+        System.out.println("Make Selection: ");
     }
     /**
      *

@@ -136,6 +136,7 @@ public class AtmController {
                 break;
 
             case 3:
+                this.view.withdrawMenu();
 
                 break;
 
@@ -155,5 +156,6 @@ public class AtmController {
 
         return selection == 4 ? false : true;
     }
+
 
 }

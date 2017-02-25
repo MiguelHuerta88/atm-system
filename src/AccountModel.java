@@ -113,7 +113,8 @@ public abstract class AccountModel {
     public String toString()
     {
         // display how the account information should be displayed.
-        String toString = "Account Information";
+
+        String toString = "\n\t\t\t\tAccount Information\n";
         toString += "\n\tCustomer Name:  " + this.customer.firstName + " " + this.customer.lastName;
         toString += "\n\tAddress:        " + this.customer.address +", " + this.customer.city + ", " + this.customer.state + " " + this.customer.zip;
         toString += "\n\tAccount Number: " + this.accountNumber + "\t\t\tID: " + this.customer.id;
