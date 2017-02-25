@@ -172,13 +172,8 @@ public class AtmController {
 
             if(hasher.doHashesMatch(customerModel.getPin(), enteredPinHashed))
             {
-                System.out.println("Hashes matches");
                 return true;
             }
-            // check if they match
-            /*if(hasher.hashText().equals(customerModel.getPin())) {
-                return true;
-            }*/
             counter--;
         }
         return false;
