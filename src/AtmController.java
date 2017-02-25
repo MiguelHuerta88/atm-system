@@ -1,3 +1,4 @@
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -165,12 +166,19 @@ public class AtmController {
             int pin = sc.nextInt();
 
             // hash the pin to try to match
-            Hasher hasher = new Hasher(String.valueOf(pin));
+            Hasher hasher = new Hasher();
 
-            // check if they match
-            if(hasher.hashText().equals(customerModel.getPin())) {
+            String enteredPinHashed = hasher.hashPin(pin, customerModel.getSalt());
+
+            if(hasher.doHashesMatch(customerModel.getPin(), enteredPinHashed))
+            {
+                System.out.println("Hashes matches");
                 return true;
             }
+            // check if they match
+            /*if(hasher.hashText().equals(customerModel.getPin())) {
+                return true;
+            }*/
             counter--;
         }
         return false;

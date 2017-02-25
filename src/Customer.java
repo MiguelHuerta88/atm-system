@@ -1,3 +1,5 @@
+import java.security.SecureRandom;
+
 /**
  * Created by MiguelHuerta on 2/19/17.
  */
@@ -67,6 +69,13 @@ public class Customer {
     private String username;
 
     /**
+     * random salt variable
+     *
+     * @var SecureRandom
+     */
+    private SecureRandom salt;
+
+    /**
      * Constructor goes here
      *
      * @param int id
@@ -90,9 +99,27 @@ public class Customer {
         this.zip = zip;
         this.username = username;
 
+        this.hashPin(pin);
+    }
+
+    /**
+     * hash pin function
+     *
+     * @param int pin
+     *
+     * @return void
+     */
+    private void hashPin(int pin)
+    {
+        // generate a random salt
+        this.salt = new SecureRandom();
+        byte bytes[] = new byte[20];
+        this.salt.nextBytes(bytes);
+        // end of salt
+
         // hash the pin
-        Hasher hasher = new Hasher(String.valueOf(pin));
-        this.pin = hasher.hashText();
+        Hasher hasher = new Hasher();
+        this.pin = hasher.hashPin(pin, this.salt);
     }
 
     /* create all getters and setter */
@@ -105,6 +132,16 @@ public class Customer {
     public String getPin()
     {
         return this.pin;
+    }
+
+    /**
+     * get salt
+     *
+     * @return SecureRandom
+     */
+    public SecureRandom getSalt()
+    {
+        return this.salt;
     }
 
     /**
