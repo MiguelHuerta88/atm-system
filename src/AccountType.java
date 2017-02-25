@@ -39,4 +39,14 @@ public class AccountType {
     {
         return this.typeId;
     }
+
+    /**
+     * get type text
+     *
+     * @return String
+     */
+    public String getType()
+    {
+        return this.type;
+    }
 }

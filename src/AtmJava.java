@@ -18,22 +18,22 @@ public class AtmJava {
      */
     public static void main(String[] args)
     {
-        Customer customer = new Customer(000001, "Sergio", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234, "svasquez");
-        Customer customer2 = new Customer(000002, "Heidi", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234, "hvasquez");
+        Customer customer = new Customer(1, "Sergio", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234, "svasquez");
+        Customer customer2 = new Customer(2, "Heidi", "Vasquez", "123 Apple St", "Los Angeles", "CA", 90745, 1234, "hvasquez");
 
         ArrayList<Customer> customers = new ArrayList<Customer>();
         customers.add(customer);
         customers.add(customer2);
 
-        CheckingAccount account = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 22:00:00", 000001);
-        CheckingAccount account2 = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 10:05:00", 000002);
+        CheckingAccount account = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 22:00:00", 1);
+        CheckingAccount account2 = new CheckingAccount(156843, 1000.00, 1, "2017-02-19 10:05:00", 2);
 
         SavingsAccount saving = new SavingsAccount(167894, 10000, 2, "2017-02-23 10:59:00", 1);
 
-        HashMap<Integer, Account> accounts = new HashMap<Integer, Account>();
-        accounts.put(account.getAccountNumber(), account);
-        accounts.put(account2.getAccountNumber(), account2);
-        accounts.put(saving.getAccountNumber(), saving);
+        ArrayList<Account> accounts = new ArrayList<Account>();
+        accounts.add(account);
+        accounts.add(account2);
+        accounts.add(saving);
 
         AccountType accountType = new AccountType(1, "Checking");
         AccountType savingType = new AccountType(2, "Savings");

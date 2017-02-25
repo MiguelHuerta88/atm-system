@@ -52,13 +52,13 @@ public class Account {
      * @param int accountTypeIf
      * @param String accessTime
      **/
-    Account(int account, double initBalance, int accountTypeId, String accessTime, int customerId)
+    Account(int account, double initBalance, int accountTypeId, String accessTime, int cusId)
     {
         balance = initBalance;
         accountNumber = account;
         typeId = accountTypeId;
         lastAccessTime = accessTime;
-        customerId = customerId;
+        customerId = cusId;
     }
 
 
@@ -115,7 +115,7 @@ public class Account {
      */
     public int getCustomerId()
     {
-        return this.customerId;
+        return customerId;
     }
 
     /**

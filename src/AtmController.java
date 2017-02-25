@@ -9,28 +9,30 @@ import java.util.Iterator;
 public class AtmController {
 
     // these are null at first
-    private Customer customerModel = null;
+    private Customer customerModel;
     private AtmView view;
+    private ArrayList<Account> customerAccounts;
 
-    private HashMap<Integer, Account> accounts;
+    private ArrayList<Account> accounts;
     private ArrayList<Customer> customers;
     private HashMap<Integer, AccountType> accountTypes;
 
     // transaction records for now will be stored in arraylist
     private ArrayList<Transaction> transactions;
 
-    public AtmController(HashMap<Integer, Account> accounts, ArrayList<Customer> customers, HashMap<Integer, AccountType> accountTypes, AtmView view)
+    public AtmController(ArrayList<Account> accounts, ArrayList<Customer> customers, HashMap<Integer, AccountType> accountTypes, AtmView view)
     {
-        /*this.accountModel = accountModel;
-        this.customerModel = customerModel;
-        this.accountTypeModel = accountTypeModel;*/
+        // all accounts of test data
         this.accounts = accounts;
+
+        // all customers with test data
         this.customers = customers;
         this.accountTypes = accountTypes;
         this.view = view;
 
         // set up the transactions
         this.transactions = new ArrayList<Transaction>();
+        this.customerAccounts = new ArrayList<Account>();
     }
 
     public void displayBalance()
@@ -104,12 +106,40 @@ public class AtmController {
 
                     // we matched a customer. set the variables that will be used by the controller
                     this.customerModel = customer;
+
+                    // we populate our variable for the customer accounts
+                    this.populateListOfCustomerAccounts(this.accounts);
                     return true;
                 }
             }
             counter--;
         }
         return false;
+    }
+
+    /**
+     * function to populate only the accounts for this customers in our customerAccounts variable
+     *
+     * @param ArrayList<Account>
+     *
+     * @return void
+     */
+    protected void populateListOfCustomerAccounts(ArrayList<Account> accounts)
+    {
+        // we need to loop and only add when they match the current customer that is set
+        if(this.customerModel == null) {
+            // terminate. user reached here incorrectly
+            System.exit(0);
+        }
+
+        // pull what we will be searching for from the customer model
+        int customerId = this.customerModel.getCustomerId();
+        for(Account account : accounts)
+        {
+            if(account.getCustomerId() == customerId) {
+                customerAccounts.add(account);
+            }
+        }
     }
 
     /**
@@ -181,10 +211,10 @@ public class AtmController {
         switch(selection) {
             case 1:
                 // display the account info
-                //String accountInfo = this.accountModel.toString();
-                //accountInfo += this.customerModel.toString();
+                String info = this.customerModel.toString() + "\n\n";
+                info += this.buildAccountString();
 
-                //this.view.displayMessage(accountInfo);
+                this.view.displayMessage(info);
 
                 // display selection menu again
                 this.view.displayMenu();
@@ -214,6 +244,27 @@ public class AtmController {
         }
 
         return selection == 4 ? false : true;
+    }
+
+    /**
+     * function to loop through any accounts for the current customer and call the toString
+     *
+     * @return String
+     */
+    public String buildAccountString()
+    {
+        String toString = "";
+
+        //
+
+        for(Account account : this.customerAccounts)
+        {
+            toString += "\t===========================";
+            toString += "\n\t" + account.toString();
+            toString += "\n\tType of Account: " + this.accountTypes.get(account.getAccountTypeId()).getType() + "\n";
+        }
+
+        return toString + "\n\n";
     }
 
 }
