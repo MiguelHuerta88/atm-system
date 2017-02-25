@@ -153,7 +153,6 @@ public class AtmController {
                 // display selection menu again
                 this.view.displayMenu();
         }
-
         return selection == 4 ? false : true;
     }
 
