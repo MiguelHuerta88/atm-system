@@ -1,8 +1,10 @@
-import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Iterator;
+import java.util.*;
+import java.text.*;
 
 /**
  * Created by Jerry Landeros on 2/17/2017.
@@ -180,6 +182,32 @@ public class AtmController {
     }
 
     /**
+     * function that will listen for sub menu selections
+     *
+     * @return view
+     */
+    public void listenForSubmenuSelection()
+    {
+        // set up the scanner
+        Scanner scanner = new Scanner(System.in);
+
+        // set up the loop session variable
+        boolean session = true;
+
+        while(session) {
+            // display the submenu view
+            this.view.depositMenu();
+
+            int selection = scanner.nextInt();
+
+            // call the selection listener for submenu
+            session = this.performSelectionSubmenu(selection);
+        }
+
+        return;
+    }
+
+    /**
      * Listen for selection function
      *
      * @return view
@@ -200,6 +228,72 @@ public class AtmController {
             // call a function to determine what we selected and then passes data to view
             session = this.performSelection(selection);
         }
+    }
+
+    /**
+     * function to loop through our accounts list and determine if the current customer has a matching account
+     *
+     * @param AccountType
+     *
+     * @return Account
+     */
+    protected Account doesCustomerHaveAccount(AccountType accountType)
+    {
+        for(Account account : this.customerAccounts)
+        {
+            if(account.getAccountTypeId() == accountType.getAccountType())
+            {
+                return account;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Function to determine what action to take on the submenu
+     *
+     * @param int selection
+     *
+     * @return boolean
+     */
+    protected boolean performSelectionSubmenu(int selection)
+    {
+        boolean isReturn = true;
+        switch(selection) {
+            case 1:
+                // checking. we only continue if the current user has a checking account
+                Account account = this.doesCustomerHaveAccount(this.accountTypes.get(1));
+                if(account != null)
+                {
+                    // we do some work fam.
+                    this.deposit(account);
+                } else {
+                    // we couldn't find a matching acocunt. Display message and return to Sub Menu
+                    this.view.displayMessage("We could not find a matching account type for your customer. Please try again.");
+                }
+                isReturn = true;
+                break;
+            case 2:
+                // saving
+
+                break;
+            case 3:
+                // return to main menu
+                isReturn = false;
+                break;
+            case 4:
+                // terminate whole program
+
+                break;
+            default:
+                // for default we just reload the selection menu. along wiht message stating that selection is invalid.
+                String text = "You have made an invalid selection. Come on BROOOO! \n\n\n";
+                this.view.displayMessage(text);
+
+                // display sub selection menu again
+                this.view.depositMenu();
+        }
+        return isReturn;
     }
 
     /**
@@ -224,8 +318,10 @@ public class AtmController {
                 break;
 
             case 2:
+                this.listenForSubmenuSelection();
 
-                this.view.depositMenu();
+                // on return display menu
+                this.view.displayMenu();
                 break;
 
             case 3:
@@ -237,7 +333,11 @@ public class AtmController {
                 String closing = "You selected to end your session. Thank you for using this ATM.\n";
                 this.view.displayMessage(closing);
                 break;
+            case 5:
 
+                this.view.displayMessage("This is a test case. We will loop through transaction list and list everything");
+                this.showAllTransactions();
+                break;
             default:
                 // for default we just reload the selection menu. along wiht message stating that selection is invalid.
                 String text = "You have made an invalid selection. Come on BROOOO! \n\n\n";
@@ -268,6 +368,49 @@ public class AtmController {
         }
 
         return toString + "\n\n";
+    }
+
+    /**
+     * function that will call the deposit function on the current Account object.
+     *
+     * @param Account account
+     *
+     * @return void
+     */
+    protected void deposit(Account account)
+    {
+        // we need to ask the user what amount they would like to deposit
+        this.view.displayMessageSameLine("How much would you like to deposit: ");
+
+        // get the amount
+        Scanner scanner = new Scanner(System.in);
+
+        try{
+            double amount = scanner.nextDouble();
+
+            // first we deposit the amount into the account object
+            account.depositAmount(amount);
+
+            // get current date timestamp
+            SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            this.transactions.add(new Transaction(ft.format(new Date()), amount, account.getAccountNumber()));
+        } catch(Exception e) {
+            //System.out.println(e.getStackTrace());
+            this.view.displayMessage("Amount entered was not valid. Transaction not made");
+        }
+    }
+
+    /**
+     * Function for testing purposes to list all transactions in list
+     *
+     * @return void
+     */
+    protected void showAllTransactions()
+    {
+        for(Transaction trasaction : this.transactions)
+        {
+            this.view.displayMessageSameLine(trasaction.toString());
+        }
     }
 
 }

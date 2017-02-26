@@ -4,12 +4,6 @@
 public class Transaction {
 
     /**
-     * id
-     * @var int id
-     */
-    public int id;
-
-    /**
      * Timestamp for transaction
      *
      * @param String timestamp
@@ -32,18 +26,27 @@ public class Transaction {
 
     /**
      *
-     * @param id
      * @param timestamp
      * @param amount
      * @param accountId
      */
-    Transaction(int id, String timestamp, double amount, int accountId)
+    Transaction(String timestamp, double amount, int accountId)
     {
-        this.id = id;
         this.timestamp = timestamp;
         this.amount = amount;
         this.accountId = accountId;
     }
 
     /* make getter and setters, along with toString */
+
+    public String toString()
+    {
+        String toString = "";
+
+        toString += "Timestamp:\t" + this.timestamp + "\n";
+        toString += "Amount:\t" + this.amount + "\n";
+        toString += "Account Id:\t" + this.accountId + "\n";
+        toString += "==================================\n";
+        return toString;
+    }
 }
