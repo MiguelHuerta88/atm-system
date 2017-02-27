@@ -23,34 +23,39 @@ public class AtmController {
     // transaction records for now will be stored in arraylist
     private ArrayList<Transaction> transactions;
 
-    public AtmController(ArrayList<Account> accounts, ArrayList<Customer> customers, HashMap<Integer, AccountType> accountTypes, AtmView view)
+    public AtmController(AtmView view)
     {
-        // all accounts of test data
-        this.accounts = accounts;
+        /* seed some test data calling the seeder*/
+        TestData seeder = new TestData();
 
-        // all customers with test data
-        this.customers = customers;
-        this.accountTypes = accountTypes;
+        /* seed the accounts */
+        this.accounts = seeder.seedAccounts();
+
+        /* seed the customers */
+        this.customers = seeder.seedCustomers();
+
+        /* seed the acount types*/
+        this.accountTypes = seeder.seedAccountTypes();
+
         this.view = view;
 
         // set up the transactions
         this.transactions = new ArrayList<Transaction>();
         this.customerAccounts = new ArrayList<Account>();
+
+        this.init();
     }
 
-    public void displayBalance()
+    /**
+     * init the controller view
+     */
+    public void init()
     {
-        //double balance = model.getBalance();
+        // show the menu
+        this.initView();
 
-        //view.displayBalance(balance);
-    }
-
-    public void displayFirstName()
-    {
-        //String name = model.getFirstName();
-
-        //view.displayFirstName(name);
-
+        // listen call function to listen for selections
+        this.listenForSelection();
     }
 
     /**
@@ -87,8 +92,17 @@ public class AtmController {
 
         Customer customer = null;
         while(counter > 0) {
-            this.view.displayMessageSameLine("Enter username:");
-            String username = sc.next();
+            //this.view.displayMessageSameLine("Enter username:");
+            this.view.displayMessageSameLine("Enter 10 digit phone number:");
+            String phone = sc.next();
+            // remove any () or -
+            phone = phone.replace("(", "");
+            phone = phone.replace(")", "");
+            phone = phone.replace("-", "");
+
+            // convert string to long
+            long phoneNumber = new Long(phone).longValue();
+
             // iterator
             Iterator<Customer> iterator = this.customers.iterator();
 
@@ -96,7 +110,7 @@ public class AtmController {
             boolean match = false;
             while(iterator.hasNext()) {
                 customer = iterator.next();
-                if(customer.getUsername().equals(username)) {
+                if(customer.getPhone() == phoneNumber) {
                     match = true;
                     // matched a customer. break out of loop
                     break;

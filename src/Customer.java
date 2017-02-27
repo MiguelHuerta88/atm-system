@@ -76,6 +76,13 @@ public class Customer {
     private SecureRandom salt;
 
     /**
+     * phone number variable
+     *
+     * @var int phone
+     */
+    protected long phone;
+
+    /**
      * Constructor goes here
      *
      * @param int id
@@ -87,9 +94,18 @@ public class Customer {
      * @param int zip
      * @param int pin
      * @param String username
+     * @param long phone
      */
-    Customer(int id, String firstName, String lastName, String address, String city, String state, int zip, int pin, String username)
-    {
+    Customer(
+            int id,
+            String firstName,
+            String lastName, String address,
+            String city, String state,
+            int zip,
+            int pin,
+            String username,
+            long phone
+    ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -98,6 +114,7 @@ public class Customer {
         this.state = state;
         this.zip = zip;
         this.username = username;
+        this.phone = phone;
 
         this.hashPin(pin);
     }
@@ -132,6 +149,16 @@ public class Customer {
     public String getPin()
     {
         return this.pin;
+    }
+
+    /**
+     * get the phone
+     *
+     * @return int
+     */
+    public long getPhone()
+    {
+        return this.phone;
     }
 
     /**
