@@ -1,10 +1,22 @@
+package Controller;
+
+import Models.Account;
+import Models.AccountType;
+import Models.Customer;
+import Models.Transaction;
+import Views.AtmView;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Iterator;
 import java.util.*;
-import java.text.*;
+
+/* import our packages */
+import Helpers.*;
+import Views.*;
+import Models.*;
 
 /**
  * Created by Jerry Landeros on 2/17/2017.

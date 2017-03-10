@@ -1,3 +1,7 @@
+package Models;
+
+import Models.Account;
+
 /**
  * Created by Darkness (Jerry Landeros) on 2/20/2017.
  */

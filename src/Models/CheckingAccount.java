@@ -1,3 +1,7 @@
+package Models;
+
+import Models.Account;
+
 /**
  * Created by MiguelHuerta on 2/17/17.
  */

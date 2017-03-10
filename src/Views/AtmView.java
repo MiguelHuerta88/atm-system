@@ -1,3 +1,5 @@
+package Views;
+
 /**
  * Created by Jerry Landeros on 2/18/2017.
  */
@@ -8,7 +10,7 @@ public class AtmView {
      *
      * @return view
      */
-    AtmView()
+    public AtmView()
     {
         // silence is golden.
     }
@@ -18,7 +20,7 @@ public class AtmView {
      *
      * @return void
      */
-    protected void displayMenu()
+    public void displayMenu()
     {
         // as of now we are just dumping the text to the terminal
         System.out.println("||=====================================================================||");
@@ -36,7 +38,7 @@ public class AtmView {
         // the view is complete. We listen for the selection inside the controller.
     }
 
-    protected void depositMenu()
+    public void depositMenu()
     {
         System.out.println("||=====================================================================||");
         System.out.println("||         Welcome to deposit menu. Please make a selection.           ||");

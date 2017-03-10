@@ -1,3 +1,4 @@
+package Helpers;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -15,7 +16,7 @@ public class Hasher
      *
      * @return String
      */
-    protected String hashPin(int pin, SecureRandom salt)
+    public String hashPin(int pin, SecureRandom salt)
     {
         byte[] hashed = null;
         String hashedPin = null;
@@ -57,7 +58,7 @@ public class Hasher
      *
      * @return boolean
      */
-    protected boolean doHashesMatch(String customerPinHashed, String enteredPinHashed)
+    public boolean doHashesMatch(String customerPinHashed, String enteredPinHashed)
     {
         try {
             // message digest

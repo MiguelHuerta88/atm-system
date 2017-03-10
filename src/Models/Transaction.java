@@ -1,3 +1,5 @@
+package Models;
+
 /**
  * Created by MiguelHuerta on 2/19/17.
  */
@@ -30,7 +32,7 @@ public class Transaction {
      * @param amount
      * @param accountId
      */
-    Transaction(String timestamp, double amount, int accountId)
+    public Transaction(String timestamp, double amount, int accountId)
     {
         this.timestamp = timestamp;
         this.amount = amount;

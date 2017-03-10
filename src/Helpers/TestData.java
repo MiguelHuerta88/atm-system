@@ -1,6 +1,8 @@
-/**
+package Helpers; /**
  * Created by MiguelHuerta on 2/26/17.
  */
+
+import Models.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,5 +1,7 @@
-import java.security.SecureRandom;
+package Models;
 
+import java.security.SecureRandom;
+import Helpers.*;
 /**
  * Created by MiguelHuerta on 2/19/17.
  */
@@ -96,7 +98,7 @@ public class Customer {
      * @param String username
      * @param long phone
      */
-    Customer(
+    public Customer(
             int id,
             String firstName,
             String lastName, String address,

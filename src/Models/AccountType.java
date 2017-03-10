@@ -1,3 +1,5 @@
+package Models;
+
 /**
  * Created by MiguelHuerta on 2/19/17.
  */
@@ -22,7 +24,7 @@ public class AccountType {
      * @param typeId
      * @param type
      */
-    AccountType(int typeId, String type)
+    public AccountType(int typeId, String type)
     {
         this.typeId = typeId;
         this.type = type;

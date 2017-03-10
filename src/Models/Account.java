@@ -1,9 +1,11 @@
+package Models;
+
 /**
  * Created by MiguelHuerta on 3/8/17.
  */
 public class Account extends BaseAccount {
 
-    Account(int account, double initBalance, int typeId, String lastAccess, int customerId)
+    public Account(int account, double initBalance, int typeId, String lastAccess, int customerId)
     {
         // call the constructor
         super(account, initBalance, typeId, lastAccess, customerId);
