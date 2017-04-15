@@ -302,9 +302,24 @@ public class AtmController {
             case 2:
                 // saving
 
+                // we only continue if current user has a checking account
+                Account saving = this.doesCustomerHaveAccount(this.accountTypes.get(2));
+                if(saving != null)
+                {
+                    // we do some work my G
+                    this.withdraw(saving);
+                } else {
+                    // we couldn't find a matching account. Give them a message
+                    this.view.displayMessage("We could not find a matching account type for your customer. Please try again.");
+                }
+                isReturn = true;
                 break;
             case 3:
                 // return to main menu
+                // output a closing app message.
+                String closing = "You selected to end your session. Thank you for using this ATM.\n";
+                this.view.displayMessage(closing);
+
                 isReturn = false;
                 break;
             case 4:
@@ -351,7 +366,10 @@ public class AtmController {
                 break;
 
             case 3:
+                this.listenForSubmenuSelection();
 
+                // on return we display the menu once again
+                this.view.displayMenu();
                 break;
 
             case 4:
@@ -394,6 +412,38 @@ public class AtmController {
         }
 
         return toString + "\n\n";
+    }
+
+    /**
+     * function that will call the saving function on the passed Account object
+     *
+     * @param Account account
+     *
+     * @return void
+     */
+    protected void withdraw(Account account)
+    {
+        // prompt the user to enter how much they want to withdraw
+        this.view.displayMessage("How much would you like to withdraw: ");
+
+        // get the amount entered
+        Scanner scanner = new Scanner(System.in);
+
+        try{
+            double amount = scanner.nextDouble();
+
+            // call the function
+            account.withdrawAmount(amount);
+
+            // next we will begin to build the information to enter into our transaction list
+            // get current date timestamp
+            SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            this.transactions.add(new Transaction(ft.format(new Date()), amount, account.getAccountNumber()));
+
+        } catch(Exception e) {
+            //System.out.println(e.getStackTrace());
+            this.view.displayMessage("Amount entered was not valid. Transaction not made");
+        }
     }
 
     /**
